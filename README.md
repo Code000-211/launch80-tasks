@@ -20,7 +20,7 @@ access to this repository.
 
 1. [Open a new task](../../issues/new/choose) and fill in the form. It starts as a **draft**.
 2. Check that someone who does not know your project could start from it.
-3. Comment `/ready`. The task goes to **Ready** and is announced on Discord.
+3. Comment `/ready`. The task goes to **Ready**, where people can take it.
 
 Only you, the person who posted the task, can mark it ready and mark it done.
 
@@ -59,9 +59,9 @@ Moderators can do everything the poster can.
 The workflows in [`.github/workflows`](.github/workflows) carry out the commands. Settings such as the board, the
 moderators and the limits are in [`.github/tasks.json`](.github/tasks.json).
 
-They need two repository secrets:
+They use repository secrets:
 
 - `BOARD_TOKEN`: a classic personal access token with the `project` scope of an account that can edit the board.
   Without it the commands still work on the issues, but the board is not updated.
-- `DISCORD_WEBHOOK`: the URL of a Discord webhook for the channel that announces tasks. Without it nothing is posted
-  to Discord.
+- `DISCORD_WEBHOOK` (optional, not set up yet): the URL of a Discord webhook for a channel that should announce new,
+  taken and finished tasks. Without it nothing is posted to Discord.
