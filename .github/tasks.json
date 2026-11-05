@@ -1,0 +1,10 @@
+{
+  "board": {
+    "owner": "Code000-211",
+    "number": 3
+  },
+  "moderators": ["Code000-211"],
+  "maxTasksPerPerson": 2,
+  "warnAfterDays": 5,
+  "releaseAfterDays": 7
+}

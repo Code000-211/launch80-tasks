@@ -1,0 +1,84 @@
+name: New task
+description: Offer work from your project that someone else on Launch80 can take.
+title: "[Task] "
+labels: ["draft"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the task so that someone who does not know your project can pick it up.
+        It stays a **draft** until you comment `/ready` on it. Only then can people take it.
+  - type: input
+    id: project
+    attributes:
+      label: Project
+      description: Where the work happens, usually a link to your repository.
+      placeholder: https://github.com/you/your-project
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What needs to be done
+      description: The task itself, with any context, links and files someone needs to start.
+    validations:
+      required: true
+  - type: textarea
+    id: done-when
+    attributes:
+      label: Done when
+      description: How you and the person doing it will know it is finished.
+      placeholder: |
+        - The settings page saves and loads the theme
+        - There is a test for it
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      multiple: true
+      options:
+        - Code
+        - Design
+        - Docs & writing
+        - Testing
+        - DevOps & infrastructure
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      options:
+        - XS (under an hour)
+        - S (a few hours)
+        - M (about a day)
+        - L (a few days)
+        - XL (a week or more)
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P0 (urgent)
+        - P1 (soon)
+        - P2 (whenever)
+    validations:
+      required: true
+  - type: input
+    id: discord
+    attributes:
+      label: Your Discord name
+      description: Who to talk to about this task on the Launch80 server.
+    validations:
+      required: true
+  - type: input
+    id: thread
+    attributes:
+      label: Discord thread
+      description: Optional. A link to the thread where this task is discussed. You can also add it later with `/thread <link>`.
+      placeholder: https://discord.com/channels/...

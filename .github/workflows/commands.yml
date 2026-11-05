@@ -1,0 +1,30 @@
+name: Task commands
+
+on:
+  issues:
+    types: [opened, edited, closed, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+
+# One run per task at a time, so two people cannot /take the same task.
+concurrency:
+  group: task-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  handle:
+    if: ${{ !github.event.issue.pull_request && github.event.sender.type != 'Bot' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        env:
+          BOARD_TOKEN: ${{ secrets.BOARD_TOKEN }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          script: |
+            const run = require('./.github/scripts/commands.js');
+            await run({ github, context, core });
